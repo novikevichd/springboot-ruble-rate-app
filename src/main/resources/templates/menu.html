@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Меню</title>
+</head>
+
+<body>
+
+Menu
+
+<form action="#" th:action="@{/result}"
+      th:object="${currencyCode}"
+      method="post">
+    <select name="currencyCode" >
+    <option th:each="currency : ${currencyMap.entrySet()}"
+        th:value="${currency.key}"
+        th:text="${currency.value}">
+    </option>
+    </select>
+
+    <button type="submit">Go!</button>
+</form>
+
+</body>
+</html>

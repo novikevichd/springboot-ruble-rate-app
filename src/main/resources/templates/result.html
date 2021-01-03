@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Result</title>
+</head>
+
+<body>
+
+<p>Код выбранной валюты:</p>
+<p th:text="${currencyCode}"></p>
+
+<p>Наименование выбранной валюты:</p>
+<p th:text="${value}"></p>
+
+<p th:text="${message}"></p>
+
+
+<img th:src="${gifUrl}" alt="" />
+
+
+
+</body>
+</html>
