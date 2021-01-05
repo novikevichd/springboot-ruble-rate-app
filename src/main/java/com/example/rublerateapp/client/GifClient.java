@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 /*
 Клиент для подключения к API gif файлов
 Используются два запроса:
-1) Берет gif файлы из https://giphy.com/search/rich
-2) Берет gif файлы из https://giphy.com/search/broke
+1) Берет gif файлы из https://giphy.com/search/rich - getRichGif()
+2) Берет gif файлы из https://giphy.com/search/broke - getBrokeGif()
  */
 @FeignClient(url="${gif.api.url}", name = "Gif-Client")
 public interface GifClient {

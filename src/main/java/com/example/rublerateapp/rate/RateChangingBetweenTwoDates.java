@@ -39,7 +39,7 @@ public class RateChangingBetweenTwoDates {
         calculatingProcessString.append("Курс выбранной валюты к 1 рублю вчера " + yesterdayInputCurrencyToRuble + "\n");
 
         float answer = todayInputCurrencyToRuble - yesterdayInputCurrencyToRuble;
-        calculatingProcessString.append("Разница курса выбранной валюты к рублю сегодня и вчера " + answer);
+        calculatingProcessString.append("Разница курса выбранной валюты к рублю сегодня и вчера " + answer +"\n");
 
         System.out.println(calculatingProcessString.toString());
 
