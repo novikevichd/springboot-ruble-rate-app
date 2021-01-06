@@ -19,16 +19,16 @@ import java.util.Random;
 @Controller
 public class PageController {
 
-    // Клиент для подключения к API курса валют
+    // Feign клиент для подключения к API курса валют
     RateClient rateClient;
 
-    // Клиент для подключения к API gif файлов
+    // Feign клиент для подключения к API gif файлов
     GifClient gifClient;
 
     // Мапа валют (Ключ=Код валюты, Значение=Полное названия валюты)
     // Значения мапы заданы в файле application.properties пункт currencyMap.
     // Используется в отображении menu.html для вывода тех валют
-    // по отношению к которым можно разчитать разницу курса валюты к Рублю
+    // по отношению к которым можно расчитать разницу курса валюты к Рублю
     Map<String, String> currencyMap;
 
 
@@ -45,7 +45,7 @@ public class PageController {
     @GetMapping("/menu")
     public String menu(Model model) {
 
-        // В строку будет сохранен Код валюты которая будет выбрана
+        // В строку будет сохранен Код валюты, которая будет выбрана
         // из выпадающего списка в отображении menu.html
         String currencyCode = null;
 
@@ -82,16 +82,16 @@ public class PageController {
         // В строку будет сохранено сообщение про изменение курса выбранной валюты
         String message;
 
-        // В зависимсти от значения разницы курсов в строку gifUrl сохраняется ссылка на случайный gif
+        // В зависимости от значения разницы курсов в строку gifUrl сохраняется ссылка на случайный gif
         // из нужной категории (https://giphy.com/search/rich  или https://giphy.com/search/broke)
         // которую предоставляет клиент для подключения к API gif файлов.
         // Если расчитанная разница меньше нуля, значит курс выбранной валюты
         // по отношению к рублю за сегодня стал выше вчерашнего
         if (difference < 0 ) {
-            gifUrl = gifClient.getRichGif(new Random().nextInt(10)).getUrl();
+            gifUrl = gifClient.getRichGif(new Random().nextInt(15)).getUrl();
             message = "Курс выбранной валюты по отношению к рублю за сегодня стал ВЫШЕ вчерашнего";
         } else {
-            gifUrl = gifClient.getBrokeGif(new Random().nextInt(10)).getUrl();
+            gifUrl = gifClient.getBrokeGif(new Random().nextInt(15)).getUrl();
             if (difference > 0) message = "Курс выбранной валюты по отношению к рублю за сегодня стал НИЖЕ вчерашнего";
             else message = "Курс выбранной валюты по отношению к рублю за сегодня не изменился";
         }
